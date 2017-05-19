@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^logout$',views.logout),
     url(r'^signup/$',views.sign_up),
     url(r'^sign/$',views.sign),
-    url(r'^manage/$',views.manage)
+    url(r'^manage/$',views.manage),
+    url(r'^sale/$',views.sale)
 ]

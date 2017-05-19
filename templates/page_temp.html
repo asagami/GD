@@ -14,11 +14,14 @@
     <link href="{% static "navbar-fixed-top.css" %}" rel='stylesheet'>
     <link href="{% static "foot.css" %}" rel="stylesheet">
     <link href="{% static "dashboard.css" %}" rel="stylesheet">
+    <link href="{% static "carousel.css" %}" rel="stylesheet">
+
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="{% static "dist/js/bootstrap.min.js" %}"></script>
+<script src="{% static "assets/js/vendor/holder.min.js" %}"></script>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -29,23 +32,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">潮红布艺</a>
+            <a class="navbar-brand" href="/">红潮布艺</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">公司简介</a></li>
-                <li><a href="/about">产品简介</a></li>
+                <li><a href="/sale">产品简介</a></li>
                 <li class="dropdown">
                     <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                       aria-expanded="false">电商 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li class="dropdown-header">to B</li>
+                        <li><a href="#">绣花加工</a></li>
+                        <li><a href="#">布艺加工</a></li>
                         <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <li class="dropdown-header">to C</li>
+                        <li><a href="#">私人订制</a></li>
+                        <li><a href="#">方案设计</a></li>
                     </ul>
                 </li>
                 {% if  user.is_superuser %}
