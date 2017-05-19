@@ -19,5 +19,10 @@ from webapp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^',views.home),
+    url(r'^$',views.home),
+    url(r'^log/next=(.*)$',views.log),
+    url(r'^logout$',views.logout),
+    url(r'^signup/$',views.sign_up),
+    url(r'^sign/$',views.sign),
+    url(r'^manage/$',views.manage)
 ]

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap core CSS -->
+    {% load staticfiles %}
+    <link href="{% static "dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "assets/css/ie10-viewport-bug-workaround.css" %}" rel="stylesheet">
+    <script src="{% static "assets/js/ie-emulation-modes-warning.js" %}"></script>
+    <script src="{% static "assets/js/ie10-viewport-bug-workaround.js" %}"></script>
+    <link href="{% static "navbar-fixed-top.css" %}" rel='stylesheet'>
+    <link href="{% static "foot.css" %}" rel="stylesheet">
+    <link href="{% static "dashboard.css" %}" rel="stylesheet">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static "dist/js/bootstrap.min.js" %}"></script>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">潮红布艺</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">公司简介</a></li>
+                <li><a href="/about">产品简介</a></li>
+                <li class="dropdown">
+                    <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                {% if  user.is_superuser %}
+                    <li><a href="/manage">管理界面</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a>welcome,{{ user.username }}</a></li>
+                    <li><a href="/logout">退出登录</a></li>
+                {% else %}
+                    <li><a  role="button" data-toggle="modal" data-target="#exampleModal"
+                           data-whatever="@getbootstrap">登录</a></li>
+                    <li><a  href="/signup" role="button">注册</a></li>
+                {% endif %}
+                <li><a href="/contact">联系我们 <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel" style="margin: 0 auto">欢迎登录红潮布艺公司</h4>
+            </div>
+            <div class="modal-body">
+                <form id='signin' action='/log/next={{request.path}}' method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only" >账号</label>
+                        <input type="text" name="userID" class="form-control" placeholder="username" required="" autofocus="" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label  for="inputPassword" class="sr-only">密码</label>
+                        <input type="password" name="passwd" class="form-control" placeholder="password" required="" autofocus="" id="password">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox"> 记住我</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+                <button class="btn btn-primary" form="signin" type="submit" VALUE="Log in">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% block body %}
+{% endblock %}
+<footer class="blog-footer">
+    <p>electronic shopping built for <a href="http://getbootstrap.com">红潮</a> by <a
+            href="https://twitter.com/mdo">@ruanyiyang</a>.</p>
+    <p>
+        <a href="/">返回顶部</a>
+    </p>
+</footer>
+</body>
+</html>
