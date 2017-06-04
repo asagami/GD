@@ -5,7 +5,7 @@ body {
 }
 
 .form-signin {
-  max-width: 400 px;
+  max-width: 400px;
   padding: 15px;
   text-align: center;
   margin: 0 auto;
@@ -54,4 +54,8 @@ body {
 
 .control-label{
   font-size: 14px;
+}
+
+.form-group{
+    max-width: 400px;
 }

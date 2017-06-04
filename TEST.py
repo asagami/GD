@@ -1,0 +1,1 @@
+print(float(str(datetime.date.today()).replace('-', '')) * 1000 )

@@ -17,16 +17,24 @@
     {% load staticfiles %}
     <link href="{% static "signin.css" %}" rel="stylesheet">
     <link href="{% static "dist/css/bootstrap.min.css" %}" rel="stylesheet">
+
 </head>
 
 <body>
+<script language="JavaScript">
+    function Check() {
+        if (document.getElementsByName('passwd').length!=document.getElementsByName('passwd_re').length) {
+            window.alert("lert('not the same')");
+        }
+        return true;
+    }</script>
 <div>
     <h1 class="form-signin">欢迎注册</h1>
     <h3 class="form-signin" style="color: #B71E32"> {{ message }}</h3>
 </div>
 <div class="container">
 
-    <form class="form-signin" action="/sign/" method="POST">
+    <form class="form-signin" action="/sign/" method="POST" onsubmit="return Check()s" name="send">
         {% csrf_token %}
         <div class="form-group">
             <label for="input" class="control-label">用户名</label>
@@ -52,9 +60,10 @@
                    placeholder="Password again"
                    required="">
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" VALUE="sign up" style="width: 30%;margin: 0 auto">注册</button>
-</div>
-</form>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" VALUE="sign up" onclick="return Check()"
+                style="width: 30%;margin: 0 auto">注册
+        </button>
+    </form>
 
 </div> <!-- /container -->
 <script>

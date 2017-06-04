@@ -20,10 +20,23 @@ from webapp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.home),
-    url(r'^log/next=(.*)$',views.log),
+    url(r'^log/(.*)$',views.log),
     url(r'^logout$',views.logout),
     url(r'^signup/$',views.sign_up),
     url(r'^sign/$',views.sign),
-    url(r'^manage/$',views.manage),
-    url(r'^sale/$',views.sale)
+    url(r'^chpwd/$',views.chpwd),
+    url(r'^chpwd_r$',views.chpwd_r),
+    url(r'^about/$',views.about),
+    url(r'^manageorder1/$',views.manageorder),
+    url(r'^manageuser/$',views.manageuser),
+    url(r'^order_yes/$',views.manageorder_yes),
+    url(r'^order_no/$', views.manageorder_no),
+    url(r'^order_delete/$',views.manageorder_delete),
+    url(r'^order_change/$',views.order_change),
+    url(r'^managegood/$',views.managegood),
+    url(r'^sale/$',views.sale),
+    url(r'^buyview/(.*)/$',views.buyview),
+    url(r'^shopping/(.*)$',views.shopping),
+    url(r'^buy/(.*)$',views.buy),
 ]
+
