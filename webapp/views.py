@@ -184,3 +184,5 @@ def buy(request, name):
 def pay(request):
     pass
 
+
+
